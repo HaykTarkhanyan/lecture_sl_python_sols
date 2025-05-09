@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.41">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Exercise 4 – Classification II</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="classification_2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="classification_2_files/libs/quarto-html/quarto.js"></script>
+<script src="classification_2_files/libs/quarto-html/popper.min.js"></script>
+<script src="classification_2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="classification_2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="classification_2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="classification_2_files/libs/quarto-html/quarto-syntax-highlighting-48ffa3e5b9d089919c6712c39e5b00f2.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="classification_2_files/libs/quarto-html/quarto-syntax-highlighting-dark-71390cc8b9bae10139428574d3aab2c6.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="classification_2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="classification_2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="classification_2_files/libs/bootstrap/bootstrap-622ca2be42d004f4c2c2dba8b4641497.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="classification_2_files/libs/bootstrap/bootstrap-dark-b6c55ab5589ced4a8e3b8e9095bbe60b.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#exercise-1-naive-bayes" id="toc-exercise-1-naive-bayes" class="nav-link active" data-scroll-target="#exercise-1-naive-bayes">Exercise 1: Naive Bayes</a></li>
+  <li><a href="#exercise-2-discriminant-analysis" id="toc-exercise-2-discriminant-analysis" class="nav-link" data-scroll-target="#exercise-2-discriminant-analysis">Exercise 2: Discriminant analysis</a></li>
+  <li><a href="#exercise-3-decision-boundaries-for-classification-learners" id="toc-exercise-3-decision-boundaries-for-classification-learners" class="nav-link" data-scroll-target="#exercise-3-decision-boundaries-for-classification-learners">Exercise 3: Decision boundaries for classification learners</a></li>
+  </ul>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="ex_classification_2_py-preview.html"><i class="bi bi-journal-code"></i>Exercise sheet for Python</a></li><li><a href="ex_classification_2_R-preview.html"><i class="bi bi-journal-code"></i>Exercise sheet for R</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exercise 4 – Classification II</h1>
+<p class="subtitle lead"><a href="https://slds-lmu.github.io/i2ml/">Introduction to Machine Learning</a></p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p>$$ </p>
+% math spaces % N, naturals % Z, integers % Q, rationals % R, reals % C, complex % C, space of continuous functions % machine numbers % maximum error % counting / finite sets % set 0, 1 % set -1, 1 % unit interval % basic math stuff % x tilde % argmax % argmin % argmax with limits % argmin with limits<br>
+% sign, signum % I, indicator % O, order
+% partial derivative
+% floor
+% ceiling % sums and products % summation from i=1 to n % summation from i=1 to m % summation from j=1 to p % summation from j=1 to p % summation from i=1 to k % summation from k=1 to g % summation from j=1 to g % mean from i=1 to n % mean from i=1 to n % mean from k=1 to g % product from i=1 to n % product from k=1 to g % product from j=1 to p % linear algebra % 1, unitvector % 0-vector % I, identity % diag, diagonal % tr, trace % span
+% &lt;.,.&gt;, scalarproduct
+% short pmatrix command % matrix A % error term for vectors % basic probability + stats % P, probability % E, expectation % Var, variance % Cov, covariance % Corr, correlation % N of the normal distribution % dist with i.i.d superscript
+<p>% … is distributed as …</p>
+% X, input space % Y, output space % set from 1 to n % set from 1 to p % set from 1 to g % P_xy % E_xy: Expectation over random variables xy % vector x (bold) % vector x-tilde (bold) % vector y (bold) % observation (x, y) % (x1, …, xp) % Design matrix % The set of all datasets % The set of all datasets of size n % D, data % D_n, data of size n % D_train, training set % D_test, test set
+% (x^i, y^i), i-th observation % {(x1,y1)), …, (xn,yn)}, data % Def. of the set of all datasets of size n % Def. of the set of all datasets % {x1, …, xn}, input data % {y1, …, yn}, input data % (y1, …, yn), vector of outcomes
+% x^i, i-th observed value of x
+<p>% y^i, i-th observed value of y % (x1^i, …, xp^i), i-th observation vector % x_j, j-th feature % (x^1_j, …, x^n_j), j-th feature vector % Basis transformation function phi % Basis transformation of xi: phi^i := phi(xi)</p>
+<p>%%%%%% ml - models general % lambda vector, hyperconfiguration vector % Lambda, space of all hpos % Inducer / Inducing algorithm % Set of all datasets times the hyperparameter space % Set of all datasets times the hyperparameter space % Inducer / Inducing algorithm % Inducer, inducing algorithm, learning algorithm</p>
+% continuous prediction function f % True underlying function (if a statistical model is assumed) % True underlying function (if a statistical model is assumed) % f(x), continuous prediction function % f with domain and co-domain % hypothesis space where f is from % Bayes-optimal model % Bayes-optimal model
+<p>% f_j(x), discriminant component function % f hat, estimated prediction function % fhat(x) % f(x | theta) % f(x^(i)) % f(x^(i)) % f(x^(i) | theta) % fhat_D, estimate of f based on D % fhat_Dtrain, estimate of f based on D %model learned on Dn with hp lambda %model learned on D with hp lambda %model learned on Dn with optimal hp lambda %model learned on D with optimal hp lambda</p>
+<p>% discrete prediction function h % h(x), discrete prediction function % h hat % hhat(x) % h(x | theta) % h(x^(i)) % h(x^(i) | theta) % Bayes-optimal classification model % Bayes-optimal classification model</p>
+<p>% yhat % yhat for prediction of target % yhat^(i) for prediction of ith targiet </p>
+% theta % theta hat % theta vector % theta vector hat
+%
+<p>% %theta learned on Dn with hp lambda %theta learned on D with hp lambda % min problem theta % argmin theta</p>
+<p>% densities + probabilities % pdf of x % p % p(x) % pi(x|theta), pdf of x given theta % pi(x^i|theta), pdf of x given theta % pi(x^i), pdf of i-th x</p>
+<p>% pdf of (x, y) % p(x, y) % p(x, y | theta) % p(x^(i), y^(i) | theta)</p>
+% pdf of x given y
+% p(x | y = k)
+% log p(x | y = k)
+<p>% p(x^i | y = k)</p>
+% prior probabilities
+% pi_k, prior
+<p>% log pi_k, log of the prior % Prior probability of parameter theta</p>
+% posterior probabilities % P(y = 1 | x), post. prob for y=1
+% P(y = k | y), post. prob for y=k % pi with domain and co-domain % Bayes-optimal classification model % Bayes-optimal classification model % pi(x), P(y = 1 | x) % pi, bold, as vector
+% pi_k(x), P(y = k | x)
+% pi_k(x | theta), P(y = k | x, theta) % pi(x) hat, P(y = 1 | x) hat
+% pi_k(x) hat, P(y = k | x) hat % pi(x^(i)) with hat
+<p>% pi_k(x^(i)) with hat % p(y | x, theta) % p(y^i |x^i, theta) % log p(y | x, theta) % log p(y^i |x^i, theta)</p>
+% probababilistic
+<p>% Bayes rule % mean vector of class-k Gaussian (discr analysis)</p>
+<p>% residual and margin % residual, stochastic % epsilon^i, residual, stochastic % residual, estimated % y f(x), margin % y^i f(x^i), margin % estimated covariance matrix % estimated covariance matrix for the j-th class</p>
+<p>% ml - loss, risk, likelihood % L(y, f), loss function % L(y, pi), loss function % L(y, f(x)), loss function % loss of observation % loss with f parameterized % loss of observation with f parameterized % loss of observation with f parameterized % loss in classification % loss in classification % loss of observation in classification % loss with pi parameterized % loss of observation with pi parameterized % L(y, h(x)), loss function on discrete classes % L(r), loss defined on residual (reg) / margin (classif) % L1 loss % L2 loss % Bernoulli loss for -1, +1 encoding % Bernoulli loss for 0, 1 encoding % cross-entropy loss % Brier score % R, risk % R(f), risk % risk def (expected loss) % R(theta), risk % R_emp, empirical risk w/o factor 1 / n % R_emp, empirical risk w/ factor 1 / n % R_emp(f) % R_emp(theta) % R_reg, regularized risk % R_reg(theta) % R_reg(f) % hat R_reg(theta) % hat R_emp(theta) % L, likelihood % L(theta), likelihood % L(theta|x), likelihood % l, log-likelihood % l(theta), log-likelihood % l(theta|x), log-likelihood % training error % test error % avg training error</p>
+<p>% lm % linear model % OLS estimator in LM</p>
+% resampling % size of the test set % size of the train set
+% size of the i-th test set
+% size of the i-th train set % index vector train data % index vector test data
+% index vector i-th train dataset
+% index vector i-th test dataset
+% D_train,i, i-th training set
+<p>% D_test,i, i-th test set</p>
+% space of train indices of size n_train % space of train indices of size n_train % space of train indices of size n_test
+% output vector associated to index J % def of the output vector associated to index J % cali-J, set of all splits % (Jtrain_1,Jtest_1) …(Jtrain_B,Jtest_B) % Generalization error % GE % GE-hat
+% GE full % GE hat holdout
+% GE hat holdout i-th set % GE-hat(lam) % GE-hat_I,J,rho(lam) % GE-hat_I,J,rho(lam) % GE formal def % aggregate function % GE of a fitted model % GEh of a fitted model % GE of a fitted model wrt loss L % pointwise loss of fitted model
+<p>% GE of a fitted model % GE of inducer % GE indexed with data % expected GE % expectation wrt data of size n</p>
+% performance measure % perf. measure derived from pointwise loss % matrix of prediction scores
+% i-th row vector of the predscore mat
+% predscore mat idxvec J % predscore mat idxvec J and model f % predscore mat idxvec Jtest and model f hat % predscore mat idxvec Jtest and model f
+<p>% predscore mat i-th idxvec Jtest and model f % def of predscore mat idxvec J and model f % Set of all datasets times HP space</p>
+<p>% ml - ROC % no. of positive instances % no. of negative instances % proportion negative instances % proportion negative instances % true/false pos/neg: % true pos % false pos (fp taken for partial derivs) % true neg % false neg</p>
+% ml - trees, extra trees % (Parent) node N % node N_k % Left node N_1 % Right node N_2
+% class probability node N
+% estimated class probability node N
+% estimated class probability left node
+<p>% estimated class probability right node</p>
+% ml - bagging, random forest
+% baselearner, default m
+% estimated base learner, default m
+% baselearner, default m % ensembled predictor % estimated ensembled predictor % ambiguity/instability of ensemble
+% weight of basemodel m
+<p>% weight of basemodel m with hat % last baselearner</p>
+% ml - boosting
+% prediction in iteration m
+% prediction in iteration m
+% prediction m-1
+% prediction m-1
+% weighted in-sample misclassification rate
+% weight vector of basemodel m
+% weight of obs i of basemodel m
+% parameters of basemodel m
+% parameters of basemodel m with hat
+% baselearner, default m % ensemble
+% pseudo residuals
+% pseudo residuals
+% terminal-region
+% terminal-region
+% mean, terminal-regions
+% mean, terminal-regions with hat
+<p>% mean, terminal-regions </p>
+<p>% ml - boosting iml lecture % theta<em> % BL j with theta % BL j with theta</em> $$</p>
+</div>
+<details>
+<summary>
+<em>Hint: Useful libraries</em>
+</summary>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="quarto-embed-nb-cell">
+<div id="import" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you may need the following packages for this exercise sheet:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>library(mlr3)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>library(mlr3learners)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>library(ggplot2)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>library(mlbench)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>library(mlr3viz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="quarto-embed-nb-cell">
+<div id="import" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Consider the following libraries for this exercise sheet:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># general</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># sklearn</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> CategoricalNB <span class="co"># import Naive Bayes Classifier for categorial distributed features</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB <span class="co"># import Naive Bayes Classifier for normal distributed features</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OrdinalEncoder</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> LinearDiscriminantAnalysis <span class="im">as</span> LDA</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> QuadraticDiscriminantAnalysis <span class="im">as</span> QDA</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.inspection <span class="im">import</span> DecisionBoundaryDisplay</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_recall_fscore_support</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<section id="exercise-1-naive-bayes" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-naive-bayes">Exercise 1: Naive Bayes</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Learning goals">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning goals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Compute Naive Bayes predictions by hand</p>
+</div>
+</div>
+<p>You are given the following table with the target variable <code>Banana</code>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Color</th>
+<th>Form</th>
+<th>Origin</th>
+<th>Banana</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>yellow</td>
+<td>oblong</td>
+<td>imported</td>
+<td>yes</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>yellow</td>
+<td>round</td>
+<td>domestic</td>
+<td>no</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>yellow</td>
+<td>oblong</td>
+<td>imported</td>
+<td>no</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>brown</td>
+<td>oblong</td>
+<td>imported</td>
+<td>yes</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>brown</td>
+<td>round</td>
+<td>domestic</td>
+<td>no</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>green</td>
+<td>round</td>
+<td>imported</td>
+<td>yes</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>green</td>
+<td>oblong</td>
+<td>domestic</td>
+<td>no</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>red</td>
+<td>round</td>
+<td>imported</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>We want to use a Naive Bayes classifier to predict whether a new fruit is a <code>Banana</code> or not. Estimate the posterior probability <span class="math inline">\(\hat\pi(\mathbf{x}_{\ast})\)</span> for a new observation <span class="math inline">\(\mathbf{x}_{\ast} = (\text{yellow}, \text{round}, \text{imported})\)</span>. How would you classify the object?</p>
+<hr>
+<p>Assume you have an additional feature <code>Length</code> that measures the length in cm. Describe in 1-2 sentences how you would handle this numeric feature with Naive Bayes.</p>
+</section>
+<section id="exercise-2-discriminant-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-discriminant-analysis">Exercise 2: Discriminant analysis</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Learning goals">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning goals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Set up discriminant analysis by hand</li>
+<li>Make predictions with discriminant analysis</li>
+<li>Discuss difference between LDA and QDA</li>
+</ol>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="classification_2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The above plot shows <span class="math inline">\(\mathcal{D}= \left( \left(\mathbf{x}^{(1)}, y^{(1)}\right), \ldots, \left(\mathbf{x}^{(n)}, y^{(n)}\right)\right)\)</span>, a data set with <span class="math inline">\(n = 200\)</span> observations of a continuous target variable <span class="math inline">\(y\)</span> and a continuous, 1-dimensional feature variable <span class="math inline">\(\mathbf{x}\)</span>. In the following, we aim at predicting <span class="math inline">\(y\)</span> with a machine learning model that takes <span class="math inline">\(\mathbf{x}\)</span> as input.</p>
+<hr>
+<p>To prepare the data for classification, we categorize the target variable <span class="math inline">\(y\)</span> in 3 classes and call the transformed target variable <span class="math inline">\(z\)</span>, as follows: <span class="math display">\[
+z^{(i)} =
+\begin{cases}
+1, &amp;  y^{(i)} \in (-\infty, 2.5] \\
+2, &amp;  y^{(i)} \in (2.5, 3.5] \\
+3, &amp;  y^{(i)} \in (3.5, \infty)
+\end{cases}
+\]</span></p>
+<p>Now we can apply quadratic discriminant analysis (QDA):</p>
+<hr>
+<p>Estimate the class means <span class="math inline">\(\mu_k = \mathbb{E}(\mathbf{x}|z = k)\)</span> for each of the three classes <span class="math inline">\(k \in \{1, 2, 3\}\)</span> visually from the plot. Do not overcomplicate this, a rough estimate is sufficient here.</p>
+<hr>
+<p>Make a plot that visualizes the different estimated densities per class.</p>
+<hr>
+<p>How would your plot from ii) change if we used linear discriminant analysis (LDA) instead of QDA? Explain your answer.</p>
+<p>Why is QDA preferable over LDA for this data?</p>
+<hr>
+<p>Given are two new observations <span class="math inline">\(\mathbf{x}_{*1} = -10\)</span> and <span class="math inline">\(\mathbf{x}_{*2} = 7\)</span>. Assuming roughly equal class sizes, state the prediction for QDA and explain how you arrive there.</p>
+</section>
+<section id="exercise-3-decision-boundaries-for-classification-learners" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-decision-boundaries-for-classification-learners">Exercise 3: Decision boundaries for classification learners</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Learning goals">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning goals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Get a feeling for decision boundaries produced by LDA/QDA/NB</p>
+</div>
+</div>
+<p>We will now visualize how well different learners classify the three-class <code>mlbench::mlbench.cassini</code> data set.</p>
+<ul>
+<li>Generate 1000 points from <code>cassini</code> using R or import <a href="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/data/cassini_data.csv"><code>cassini_data.csv</code></a> in Python.</li>
+<li>Then, perturb the <code>x.2</code> dimension with Gaussian noise (mean 0, standard deviation 0.5), and consider the classifiers already introduced in the lecture:
+<ul>
+<li>LDA (Linear Discriminant Analysis),</li>
+<li>QDA (Quadratic Discriminant Analysis), and</li>
+<li>Naive Bayes.</li>
+</ul></li>
+</ul>
+<p>Plot the learners’ decision boundaries. Can you spot differences in separation ability?</p>
+<p>(Note that logistic regression cannot handle more than two classes and is therefore not listed here.)</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
