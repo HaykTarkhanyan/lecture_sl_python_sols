@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>Exercise:</title>
+    <title>Python - ARM - Exercise 3</title>
     <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3173,7 +3173,7 @@ vertical-align: -.125em;
     <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
       
       <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href><i class="bi bi-caret-left"></i> Back to Article</a>
-      <h6><i class="bi bi-journal-code"></i> Exercise:</h6>
+      <h6><i class="bi bi-journal-code"></i> Python - ARM - Exercise 3</h6>
 
             <a href="sol_advriskmin_3_py.ipynb" class="btn btn-primary quarto-download-embed" data-noresolveinput="true" download="sol_advriskmin_3_py.ipynb">Download Notebook</a>
           </div>
@@ -3184,7 +3184,8 @@ vertical-align: -.125em;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#solution" id="toc-solution" class="nav-link active" data-scroll-target="#solution">Solution:</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link active" data-scroll-target="#exercise">Exercise:</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution:</a></li>
   <li><a href="#defining-the-model-equation" id="toc-defining-the-model-equation" class="nav-link" data-scroll-target="#defining-the-model-equation">Defining the model equation</a></li>
   <li><a href="#optimal-coefficients" id="toc-optimal-coefficients" class="nav-link" data-scroll-target="#optimal-coefficients">Optimal coefficients</a></li>
   <li><a href="#checking-forbes-conjecture" id="toc-checking-forbes-conjecture" class="nav-link" data-scroll-target="#checking-forbes-conjecture">Checking Forbes’ conjecture</a></li>
@@ -3199,7 +3200,7 @@ vertical-align: -.125em;
 </div>
 <main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercise:</h1>
+<h1 class="title">Python - ARM - Exercise 3</h1>
 </div>
 
 
@@ -3214,9 +3215,12 @@ vertical-align: -.125em;
 
 
 </header>     <div id="fd12cd68" class="cell markdown">
+<section id="exercise" class="level1">
+<h1>Exercise:</h1>
 <p>The dataset <span class="math inline">\(\texttt{forbes}\)</span> in the R-package <span class="math inline">\(\texttt{MASS}\)</span> contains 17 different observations of <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> at different locations in the Alps and Scotland, i.e., the data set is <span class="math inline">\((x^{(i)},y^{(i)})_{i=1}^{17}.\)</span> Analyze whether his conjecture was reasonable by using the following code snippet:</p>
+</section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="exercise" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [30]:</pre></div><div id="exercise" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param X the feature input matrix X</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y the outcome vector y</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param theta parameter vector for the model (2-dimensional)</span></span>
@@ -3228,7 +3232,7 @@ vertical-align: -.125em;
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> minimize</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;../data/forbes.csv&quot;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://raw.githubusercontent.com/HaykTarkhanyan/lecture_sl_python_sols/refs/heads/main/exercises/data/forbes.csv&quot;</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>forbes <span class="op">=</span> pd.read_csv(url)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># design matrix X with intercept (all 1s) and bp column</span></span>
@@ -3408,7 +3412,7 @@ L\left(y, f(\mathbf{x ~|~ \bm{\theta} })\right)= \big(\log(y)-\log(f(\mathbf{x ~
 <h1>Full code</h1>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [27]:</pre></div><div id="full_code" class="cell" data-execution_count="27">
+<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="full_code" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param X the feature input matrix X</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y the outcome vector y</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param theta parameter vector for the model (2-dimensional)</span></span>
@@ -3434,7 +3438,7 @@ L\left(y, f(\mathbf{x ~|~ \bm{\theta} })\right)= \big(\log(y)-\log(f(\mathbf{x ~
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; function to represent your models via the parameter vector theta = [theta_1, theta_2]</span></span>
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return a predicted label y_hat for x</span></span>
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x, theta):</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Recall that x[1] is always 1 and x[2] is the feature value (bp)</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Recall that x[0] is always 1 and x[1] is the feature value (bp)</span></span>
 <span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  y_hat <span class="op">=</span> theta[<span class="dv">0</span>] <span class="op">*</span> np.exp(theta[<span class="dv">1</span>] <span class="op">*</span> x[<span class="dv">1</span>]) </span>
 <span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> y_hat</span>

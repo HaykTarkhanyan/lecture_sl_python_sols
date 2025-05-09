@@ -3242,7 +3242,7 @@ window.Quarto = {
   <li><a href="#alternative-solution" id="toc-alternative-solution" class="nav-link" data-scroll-target="#alternative-solution">Alternative solution</a></li>
   <li><a href="#full-code" id="toc-full-code" class="nav-link" data-scroll-target="#full-code">Full code</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="sol_advriskmin_3_R-preview.html"><i class="bi bi-journal-code"></i>Exercise:</a></li><li><a href="sol_advriskmin_3_py-preview.html"><i class="bi bi-journal-code"></i>Exercise:</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="sol_advriskmin_3_py-preview.html"><i class="bi bi-journal-code"></i>Python - ARM - Exercise 3</a></li><li><a href="sol_advriskmin_3_R-preview.html"><i class="bi bi-journal-code"></i>R - ARM- Exercise 3</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -3403,7 +3403,7 @@ window.Quarto = {
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="quarto-embed-nb-cell">
-<div id="exercise" class="cell">
+<div id="exercise" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param X the feature input matrix X</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y the outcome vector y</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param theta parameter vector for the model (2-dimensional)</span></span>
@@ -3415,7 +3415,7 @@ window.Quarto = {
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> minimize</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;../data/forbes.csv&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://raw.githubusercontent.com/HaykTarkhanyan/lecture_sl_python_sols/refs/heads/main/exercises/data/forbes.csv&quot;</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>forbes <span class="op">=</span> pd.read_csv(url)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># design matrix X with intercept (all 1s) and bp column</span></span>
@@ -3841,7 +3841,7 @@ Mean Absolute Percentage Error (MAPE): 0.4106409 %</code></pre>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <div class="quarto-embed-nb-cell">
-<div id="full_code" class="cell" data-execution_count="27">
+<div id="full_code" class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param X the feature input matrix X</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y the outcome vector y</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param theta parameter vector for the model (2-dimensional)</span></span>
@@ -3867,7 +3867,7 @@ Mean Absolute Percentage Error (MAPE): 0.4106409 %</code></pre>
 <span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; function to represent your models via the parameter vector theta = [theta_1, theta_2]</span></span>
 <span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return a predicted label y_hat for x</span></span>
 <span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x, theta):</span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Recall that x[1] is always 1 and x[2] is the feature value (bp)</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Recall that x[0] is always 1 and x[1] is the feature value (bp)</span></span>
 <span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>  y_hat <span class="op">=</span> theta[<span class="dv">0</span>] <span class="op">*</span> np.exp(theta[<span class="dv">1</span>] <span class="op">*</span> x[<span class="dv">1</span>]) </span>
 <span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> y_hat</span>
