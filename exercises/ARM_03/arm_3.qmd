@@ -4,10 +4,10 @@ subtitle: "[Supervised Learning](https://slds-lmu.github.io/i2ml/)"
 notebook-view:
   - notebook: sol_classification_2_R.ipynb
     title: "Solutions for R"
-    url: "a"
+    url: "https://github.com/HaykTarkhanyan/lecture_sl_python_sols/blob/main/exercises/ARM_03/sol_advriskmin_3_R.ipynb"
   - notebook: sol_classification_2_py.ipynb
     title: "Solutions for Python"
-    url: "a"
+    url: "https://github.com/HaykTarkhanyan/lecture_sl_python_sols/blob/main/exercises/ARM_03/sol_advriskmin_3_py.ipynb"
 ---
 
 ::: {.content-hidden when-format="pdf"}
