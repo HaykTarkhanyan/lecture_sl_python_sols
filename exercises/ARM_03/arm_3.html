@@ -3242,7 +3242,7 @@ window.Quarto = {
   <li><a href="#alternative-solution" id="toc-alternative-solution" class="nav-link" data-scroll-target="#alternative-solution">Alternative solution</a></li>
   <li><a href="#full-code" id="toc-full-code" class="nav-link" data-scroll-target="#full-code">Full code</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="sol_advriskmin_3_py-preview.html"><i class="bi bi-journal-code"></i>Python - ARM - Exercise 3</a></li><li><a href="sol_advriskmin_3_R-preview.html"><i class="bi bi-journal-code"></i>R - ARM- Exercise 3</a></li></ul></div></nav>
+</nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -3356,6 +3356,19 @@ window.Quarto = {
 <p>% mean, terminal-regions </p>
 <p>% ml - boosting iml lecture % theta<em> % BL j with theta % BL j with theta</em> $$</p>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can run the notebooks in Google Colab here: <a href="https://colab.research.google.com/github/HaykTarkhanyan/lecture_sl_python_sols/blob/main/exercises/ARM_03/sol_advriskmin_3_R.ipynb">R</a>, <a href="https://colab.research.google.com/github/HaykTarkhanyan/lecture_sl_python_sols/blob/main/exercises/ARM_03/sol_advriskmin_3_py.ipynb">Python</a>.</p>
+</div>
+</div>
 <section id="exercise" class="level1">
 <h1>Exercise:</h1>
 <p>The dataset <span class="math inline">\(\texttt{forbes}\)</span> in the R-package <span class="math inline">\(\texttt{MASS}\)</span> contains 17 different observations of <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> at different locations in the Alps and Scotland, i.e., the data set is <span class="math inline">\((x^{(i)},y^{(i)})_{i=1}^{17}.\)</span> Analyze whether his conjecture was reasonable by using the following code snippet:</p>
@@ -3363,8 +3376,8 @@ window.Quarto = {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href>R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href>Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="quarto-embed-nb-cell">
-<div id="exercise" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_R.ipynb" data-notebook-title="R - ARM- Exercise 3" data-notebook-cellid="cell-exercise">
+<div id="exercise" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param X the feature input matrix X</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y the outcome vector y</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param theta parameter vector for the model (2-dimensional)</span></span>
@@ -3402,8 +3415,8 @@ window.Quarto = {
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="quarto-embed-nb-cell">
-<div id="exercise" class="cell" data-execution_count="30">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_py.ipynb" data-notebook-title="Python - ARM - Exercise 3" data-notebook-cellid="cell-exercise">
+<div id="exercise" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param X the feature input matrix X</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y the outcome vector y</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param theta parameter vector for the model (2-dimensional)</span></span>
@@ -3470,8 +3483,8 @@ Note
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href>R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href>Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div class="quarto-embed-nb-cell">
-<div id="model_equation" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_R.ipynb" data-notebook-title="R - ARM- Exercise 3" data-notebook-cellid="cell-model_equation">
+<div id="model_equation" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; function to represent your models via the parameter vector theta = c(theta_1, theta_2)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return a predicted label y_hat for x</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, theta){</span>
@@ -3484,8 +3497,8 @@ Note
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="quarto-embed-nb-cell">
-<div id="model_equation" class="cell" data-execution_count="22">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_py.ipynb" data-notebook-title="Python - ARM - Exercise 3" data-notebook-cellid="cell-model_equation">
+<div id="model_equation" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; function to represent your models via the parameter vector theta = [theta_1, theta_2]</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return a predicted label y_hat for x</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x, theta):</span>
@@ -3512,8 +3525,8 @@ L\left(y, f(\mathbf{x ~|~ \boldsymbol{\theta} })\right)= \big(\log(y)-\log(f(\ma
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href>R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href>Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div class="quarto-embed-nb-cell">
-<div id="optim_coeff" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_R.ipynb" data-notebook-title="R - ARM- Exercise 3" data-notebook-cellid="cell-optim_coeff">
+<div id="optim_coeff" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return a vector consisting of the optimal parameter vector </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>optim_coeff <span class="ot">&lt;-</span> <span class="cf">function</span>(X,y){</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -3542,8 +3555,8 @@ L\left(y, f(\mathbf{x ~|~ \boldsymbol{\theta} })\right)= \big(\log(y)-\log(f(\ma
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div class="quarto-embed-nb-cell">
-<div id="optim_coeff" class="cell" data-execution_count="23">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_py.ipynb" data-notebook-title="Python - ARM - Exercise 3" data-notebook-cellid="cell-optim_coeff">
+<div id="optim_coeff" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return a vector consisting of the optimal parameter vector </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> optim_coeff(X,y):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#&#39; @return the empirical risk of a parameter vector theta</span></span>
@@ -3588,8 +3601,8 @@ L\left(y, f(\mathbf{x ~|~ \boldsymbol{\theta} })\right)= \big(\log(y)-\log(f(\ma
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href>R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href>Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<div class="quarto-embed-nb-cell">
-<div id="cell-forbes_visually" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_R.ipynb" data-notebook-title="R - ARM- Exercise 3" data-notebook-cellid="cell-forbes_visually">
+<div id="cell-forbes_visually" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>f_x <span class="ot">&lt;-</span> <span class="cf">function</span>(x, theta){</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>((theta[<span class="dv">1</span>] <span class="sc">*</span> <span class="fu">exp</span>(theta[<span class="dv">2</span>]<span class="sc">*</span>x)))</span>
@@ -3609,8 +3622,8 @@ L\left(y, f(\mathbf{x ~|~ \boldsymbol{\theta} })\right)= \big(\log(y)-\log(f(\ma
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<div class="quarto-embed-nb-cell">
-<div id="cell-forbes_visually" class="cell" data-execution_count="24">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_py.ipynb" data-notebook-title="Python - ARM - Exercise 3" data-notebook-cellid="cell-forbes_visually">
+<div id="cell-forbes_visually" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_x(x, theta):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> theta[<span class="dv">0</span>] <span class="op">*</span> np.exp(theta[<span class="dv">1</span>] <span class="op">*</span> x)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3644,8 +3657,8 @@ L\left(y, f(\mathbf{x ~|~ \boldsymbol{\theta} })\right)= \big(\log(y)-\log(f(\ma
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href>R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href>Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
-<div class="quarto-embed-nb-cell">
-<div id="forbes_mape" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_R.ipynb" data-notebook-title="R - ARM- Exercise 3" data-notebook-cellid="cell-forbes_mape">
+<div id="forbes_mape" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mape <span class="ot">&lt;-</span> <span class="cf">function</span>(X,y,theta){</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  y_hat <span class="ot">=</span> <span class="fu">apply</span>(X,<span class="dv">1</span>,f,theta)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  perc_error <span class="ot">=</span> <span class="fu">abs</span>((y <span class="sc">-</span> y_hat)<span class="sc">/</span>y) <span class="sc">*</span> <span class="dv">100</span></span>
@@ -3659,8 +3672,8 @@ L\left(y, f(\mathbf{x ~|~ \boldsymbol{\theta} })\right)= \big(\log(y)-\log(f(\ma
 </div>
 </div>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
-<div class="quarto-embed-nb-cell">
-<div id="forbes_mape" class="cell" data-execution_count="25">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_py.ipynb" data-notebook-title="Python - ARM - Exercise 3" data-notebook-cellid="cell-forbes_mape">
+<div id="forbes_mape" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mape(X, y, theta):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  y_hat <span class="op">=</span> np.array([f(x, theta) <span class="cf">for</span> x <span class="kw">in</span> X])</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  perc_error <span class="op">=</span> np.<span class="bu">abs</span>((y <span class="op">-</span> y_hat)<span class="op">/</span>y) <span class="op">*</span> <span class="dv">100</span></span>
@@ -3685,8 +3698,8 @@ L\left(y, f(\mathbf{x ~|~ \boldsymbol{\theta} })\right)= \big(\log(y)-\log(f(\ma
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href>R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href>Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
-<div class="quarto-embed-nb-cell">
-<div id="cell-analytical_solution" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_R.ipynb" data-notebook-title="R - ARM- Exercise 3" data-notebook-cellid="cell-analytical_solution">
+<div id="cell-analytical_solution" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>hat_theta_2 <span class="ot">=</span> <span class="fu">cov</span>(bp,<span class="fu">log</span>(pres))<span class="sc">/</span>(<span class="fu">var</span>(bp)) </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>hat_theta_1 <span class="ot">=</span> <span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(pres))<span class="sc">-</span>hat_theta_2<span class="sc">*</span><span class="fu">mean</span>(bp))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3704,8 +3717,8 @@ L\left(y, f(\mathbf{x ~|~ \boldsymbol{\theta} })\right)= \big(\log(y)-\log(f(\ma
 </div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
-<div class="quarto-embed-nb-cell">
-<div id="cell-analytical_solution" class="cell" data-execution_count="26">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_py.ipynb" data-notebook-title="Python - ARM - Exercise 3" data-notebook-cellid="cell-analytical_solution">
+<div id="cell-analytical_solution" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>hat_theta_2 <span class="op">=</span> np.cov(forbes[<span class="st">&#39;bp&#39;</span>], np.log(forbes[<span class="st">&#39;pres&#39;</span>]))[<span class="dv">0</span>,<span class="dv">1</span>] <span class="op">/</span> np.var(forbes[<span class="st">&#39;bp&#39;</span>])</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>hat_theta_1 <span class="op">=</span> np.exp(np.mean(np.log(forbes[<span class="st">&#39;pres&#39;</span>])) <span class="op">-</span> hat_theta_2 <span class="op">*</span> np.mean(forbes[<span class="st">&#39;bp&#39;</span>]))</span>
@@ -3741,8 +3754,8 @@ L\left(y, f(\mathbf{x ~|~ \boldsymbol{\theta} })\right)= \big(\log(y)-\log(f(\ma
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href>R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href>Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
-<div class="quarto-embed-nb-cell">
-<div id="full_code" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_R.ipynb" data-notebook-title="R - ARM- Exercise 3" data-notebook-cellid="cell-full_code">
+<div id="full_code" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param X the feature input matrix X</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y the outcome vector y</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param theta parameter vector for the model (2-dimensional)</span></span>
@@ -3840,7 +3853,7 @@ Mean Absolute Percentage Error (MAPE): 0.4106409 %</code></pre>
 </div>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
-<div class="quarto-embed-nb-cell">
+<div class="quarto-embed-nb-cell" data-notebook="C:\Users\hayk_\OneDrive\Desktop\lecture_sl_python_sols\exercises\ARM_03\sol_advriskmin_3_py.ipynb" data-notebook-title="Python - ARM - Exercise 3" data-notebook-cellid="cell-full_code">
 <div id="full_code" class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param X the feature input matrix X</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y the outcome vector y</span></span>

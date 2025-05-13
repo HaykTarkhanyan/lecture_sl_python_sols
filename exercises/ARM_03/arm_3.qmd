@@ -1,13 +1,10 @@
 ---
 title: "Exercise 3 -- Advanced Risk Minimization III"
 subtitle: "[Supervised Learning](https://slds-lmu.github.io/i2ml/)"
-notebook-view:
-  - notebook: sol_advriskmin_3_R.ipynb
-    title: "Solutions for R"
-    url: "https://github.com/HaykTarkhanyan/lecture_sl_python_sols/blob/main/exercises/ARM_03/sol_advriskmin_3_R.ipynb"
-  - notebook: sol_advriskmin_3_py.ipynb
-    title: "Solutions for Python"
-    url: "https://github.com/HaykTarkhanyan/lecture_sl_python_sols/blob/main/exercises/ARM_03/sol_advriskmin_3_py.ipynb"
+notebook-view:  false
+  # - notebook: sol_advriskmin_3_R.ipynb
+  #   title: "Exercise sheet for R"
+  #   url: "https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/supervised-classification/ex_classification_2_R.ipynb"
 ---
 
 ::: {.content-hidden when-format="pdf"}
@@ -15,6 +12,11 @@ notebook-view:
 {{< include ../_quarto/latex-math.qmd >}}
 :::
 :::
+
+::: callout-tip
+You can run the notebooks in Google Colab here: [R](https://colab.research.google.com/github/HaykTarkhanyan/lecture_sl_python_sols/blob/main/exercises/ARM_03/sol_advriskmin_3_R.ipynb), [Python](https://colab.research.google.com/github/HaykTarkhanyan/lecture_sl_python_sols/blob/main/exercises/ARM_03/sol_advriskmin_3_py.ipynb).
+:::
+
 
 # Exercise: 
 The dataset $\texttt{forbes}$ in the R-package $\texttt{MASS}$ contains 17 different observations of $y$ and $x$ at different locations in the Alps and Scotland, i.e., the data set is $(x^{(i)},y^{(i)})_{i=1}^{17}.$ Analyze whether his conjecture was reasonable by using the following code snippet:
