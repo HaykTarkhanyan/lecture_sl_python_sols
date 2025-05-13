@@ -66,7 +66,7 @@ For the optimization we will use the L-BFGS (Limited-memory BFGS) method. You ca
 :::
 
 ## Checking Forbes' conjecture
-As we can see the conjecture is quite reasonable, and we experiance a big residual only for the point $x \backsimeq  205$.
+As we can see the conjecture is quite reasonable, and we experience a big residual only for the point $x \backsimeq  205$.
 
 Also, the Mean Absolute Percentage Error (MAPE) is only around $0.4\%$. 
 
