@@ -2,10 +2,10 @@
 title: "Exercise 3 -- Advanced Risk Minimization III"
 subtitle: "[Supervised Learning](https://slds-lmu.github.io/i2ml/)"
 notebook-view:
-  - notebook: sol_classification_2_R.ipynb
+  - notebook: sol_advriskmin_3_R.ipynb
     title: "Solutions for R"
     url: "https://github.com/HaykTarkhanyan/lecture_sl_python_sols/blob/main/exercises/ARM_03/sol_advriskmin_3_R.ipynb"
-  - notebook: sol_classification_2_py.ipynb
+  - notebook: sol_advriskmin_3_py.ipynb
     title: "Solutions for Python"
     url: "https://github.com/HaykTarkhanyan/lecture_sl_python_sols/blob/main/exercises/ARM_03/sol_advriskmin_3_py.ipynb"
 ---
